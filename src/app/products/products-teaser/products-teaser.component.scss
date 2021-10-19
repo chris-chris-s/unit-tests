@@ -1,0 +1,17 @@
+:host {
+  .card {
+		transition: all 300ms;
+
+		&.inactive {
+			opacity: .5;
+		}
+
+		&:hover {
+			background: #EFEFEF;
+		}
+
+		&-image {
+			padding-top: 2em;
+		}
+	}
+}

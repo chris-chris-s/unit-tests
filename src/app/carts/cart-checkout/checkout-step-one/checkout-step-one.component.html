@@ -1,0 +1,145 @@
+<h2>Persönliche Daten</h2>
+<form novalidate (ngSubmit)="save()" [formGroup]="customerForm">
+  <div class="field">
+    <label class="label">Vorname</label>
+    <div class="control">
+      <input
+        formControlName="firstName"
+        [ngClass]="{
+          'is-danger':
+            (customerForm.get('firstName').touched ||
+              customerForm.get('firstName').dirty) &&
+            !customerForm.get('firstName').valid
+        }"
+        class="input"
+        type="text"
+        placeholder="Jonas"
+      />
+    </div>
+    <p class="invalid-feedback">
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('firstName').touched &&
+          customerForm.get('firstName').errors?.required
+        "
+      >
+        Please enter your first name.
+      </span>
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('firstName').touched &&
+          customerForm.get('firstName').errors?.minlength
+        "
+      >
+        The first name must be longer than 3 characters.
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Nachname</label>
+    <div class="control">
+      <input
+        formControlName="lastName"
+        [ngClass]="{
+          'is-danger':
+            (customerForm.get('lastName').touched ||
+              customerForm.get('lastName').dirty) &&
+            !customerForm.get('lastName').valid
+        }"
+        class="input"
+        type="text"
+        placeholder="Dymaczweski"
+      />
+    </div>
+    <p class="invalid-feedback">
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('lastName').touched &&
+          customerForm.get('lastName').errors?.required
+        "
+      >
+        Please enter your first name.
+      </span>
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('lastName').touched &&
+          customerForm.get('lastName').errors?.minlength
+        "
+      >
+        The first name must be longer than 3 characters.
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input
+        formControlName="email"
+        [ngClass]="{
+          'is-danger':
+            (customerForm.get('email').touched ||
+              customerForm.get('email').dirty) &&
+            !customerForm.get('email').valid
+        }"
+        class="input"
+        type="email"
+        placeholder="some.user@example.com"
+      />
+    </div>
+    <p
+      *ngIf="
+        customerForm.get('email').touched &&
+        customerForm.get('email').errors?.required
+      "
+      class="help is-danger"
+    >
+      This email is invalid
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Adresse</label>
+    <div class="control">
+      <input
+        formControlName="address"
+        [ngClass]="{
+          'is-danger':
+            (customerForm.get('address').touched ||
+              customerForm.get('address').dirty) &&
+            !customerForm.get('address').valid
+        }"
+        class="input"
+        type="text"
+        placeholder="Plange Mühle 1, 40221 Düsseldorf"
+      />
+    </div>
+    <p class="invalid-feedback">
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('address').touched &&
+          customerForm.get('address').errors?.required
+        "
+      >
+        Please enter your first name.
+      </span>
+      <span
+        class="help is-danger"
+        *ngIf="
+          customerForm.get('address').touched &&
+          customerForm.get('address').errors?.minlength
+        "
+      >
+        The first name must be longer than 3 characters.
+      </span>
+    </p>
+  </div>
+
+  <button type="submit" [disabled]="!customerForm.valid">Weiter</button>
+</form>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>

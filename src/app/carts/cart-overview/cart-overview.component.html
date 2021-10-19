@@ -1,0 +1,15 @@
+<h2>Übersicht</h2>
+<h3>Produkte im Warenkorb</h3>
+<ul *ngFor="let product of this.cartService.getProductList()">
+  <li><h4>{{product.productName}} {{product.price/100.0 | currency:"EUR"}}</h4>
+  <p>{{product.description}}</p>
+</li>
+<li>
+  <div class="card-image">
+		<figure class="image is-4by3">
+			<img src="{{product.image.sm}}" alt="{{product.productName}}">
+		</figure>
+	</div>
+</li>
+</ul>
+<button (click)="onCheckout()">Jetzt kaufen!</button>

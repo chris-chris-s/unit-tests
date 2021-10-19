@@ -1,0 +1,48 @@
+<div class="container product-detail" *ngIf="this.productDetail">
+  <div class="columns margin-top-xxl">
+    <div class="column is-two-fifths">
+      <figure class="image">
+        <img
+          src="{{ this.productDetail.image.md }}"
+          alt="{{ this.productDetail.productName }}"
+        />
+      </figure>
+    </div>
+    <div class="column is-three-fifths">
+      <h1 class="product-detail__title">
+        {{ this.productDetail.productName }}
+      </h1>
+      <p class="product-detail__company">
+        {{ this.productDetail.company }}
+        <span *ngIf="this.productDetail.companySlogan">
+          - {{ this.productDetail.companySlogan }}
+        </span>
+      </p>
+      <ul class="product-detail__categories tags">
+        <li *ngFor="let categorie of this.productDetail.categories" class="tag">
+          {{ categorie | lowercase }}
+        </li>
+      </ul>
+      <p class="product-detail__price">
+        {{ this.productDetail.price / 100.0 | currency: "EUR" }}
+      </p>
+      <h4>Farben</h4>
+      <ul class="product-detail__color-picker">
+        <li
+          *ngFor="let color of this.productDetail.colors"
+          class="product-detail__color-picker-item is-{{ color | lowercase }}"
+        ></li>
+      </ul>
+      <h4>Produktdetails</h4>
+      <p>{{ this.productDetail.description }}</p>
+
+      <a
+        (click)="onCheckout()"
+        class="button is-info"
+        [attr.disabled]="this.productDetail.inStock ? null : true"
+      >
+        Zum Warenkorb hinzufügen
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<main>
+  <div class="products container">
+    <h2>Products</h2>
+    <ul class="columns is-mobile is-multiline ">
+      <li *ngFor="let product of this.ProductList | slice:pageOffset:itemsPerPage*this.currentPage+this.itemsPerPage; let i=index" class="column is-full-mobile is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+        <products-teaser [product]="product"></products-teaser>
+      </li>
+    </ul>
+    <div class="products-pager">
+      <nav class="pagination is-medium  is-centered" role="navigation" aria-label="pagination">
+        <button class="button is-primary" type="button" (click)="onPrev($event)">zurück</button>
+        <button class="button is-primary"type="button" (click)="onNext($event)">weiter</button>
+      </nav>  
+    </div>    
+  </div>
+</main>

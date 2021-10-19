@@ -1,0 +1,75 @@
+<h2>Zahlungsdaten</h2>
+<form (ngSubmit)="save()" [formGroup]="paymentForm">
+    <div class="field">
+        <label class="label">Account Owner</label>
+        <div class="control">
+            <input
+            formControlName="accountOwner"
+            [ngClass]="{'is-danger': (paymentForm.get('accountOwner').touched || paymentForm.get('accountOwner').dirty) && !paymentForm.get('accountOwner').valid }"
+            class="input"
+            type="text"
+            placeholder="Jonas"
+            />
+        </div>
+        <p class="invalid-feedback">
+            <span
+            class="help is-danger"
+            *ngIf="paymentForm.get('accountOwner').touched && paymentForm.get('accountOwner').errors?.required">
+            Please enter the account owner.
+            </span>
+            <span
+            class="help is-danger"
+            *ngIf="paymentForm.get('accountOwner').touched && paymentForm.get('accountOwner').errors?.minlength">
+            The account owner must be longer than 3 characters.
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">IBAN</label>
+        <div class="control">
+            <input
+            formControlName="iban"
+            [ngClass]="{'is-danger': (paymentForm.get('iban').touched || paymentForm.get('iban').dirty) && !paymentForm.get('iban').valid }"
+            class="input"
+            type="text"
+            placeholder="DE02120300000000202051"
+            />
+        </div>
+        <p class="invalid-feedback">
+            <span
+            class="help is-danger"
+            *ngIf="paymentForm.get('iban').touched && paymentForm.get('iban').errors?.required">
+            Please enter the IBAN.
+            </span>
+            <span
+            class="help is-danger"
+            *ngIf="paymentForm.get('iban').touched && (paymentForm.get('iban').errors?.minlength || paymentForm.get('iban').errors?.maxlength )">
+            The IBAN must be between 15 and 32 characters.
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">BIC</label>
+        <div class="control">
+            <input
+            formControlName="bic"
+            [ngClass]="{'is-danger': (paymentForm.get('bic').touched || paymentForm.get('bic').dirty) && !paymentForm.get('bic').valid }"
+            class="input"
+            type="text"
+            placeholder="GENOERS1PCB"
+            />
+        </div>
+        <p class="invalid-feedback">
+            <span
+            class="help is-danger"
+            *ngIf="paymentForm.get('bic').touched && paymentForm.get('bic').errors?.required">
+            Please enter the BIC.
+            </span>
+        </p>
+    </div>
+    <button type="submit">Weiter</button>
+</form>
+
+

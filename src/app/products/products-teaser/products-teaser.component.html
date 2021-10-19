@@ -1,0 +1,37 @@
+<div [ngClass]="product.inStock ? 'card' : 'card inactive'">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="{{ product.image.sm }}" alt="{{ product.productName }}" />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <ng-content></ng-content>
+        <p class="title is-4" [innerHTML]="product.productName"></p>
+      </div>
+    </div>
+    <div class="content" [innerHTML]="truncateChar(product.description)"></div>
+    {{ product.productPrice / 100.0 | currency: "EUR" }}
+    <div>
+      <ng-template [ngIf]="product.inStock" [ngIfElse]="elseBlock">
+        <a
+          class="button is-link"
+          [routerLink]="['product', product.id]"
+          title="{{ product.productName }}"
+          >zum Produkt</a
+        >
+      </ng-template>
+      <ng-template #elseBlock>
+        <button
+          disabled
+          class="button is-link"
+          [routerLink]="['product', product.id]"
+          title="{{ product.productName }}"
+        >
+          nicht auf Lager
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>

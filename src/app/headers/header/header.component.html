@@ -1,0 +1,47 @@
+<header>
+  <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="assets/images/logo.png" width="326" height="236" />
+      </a>
+      <a
+        (click)="toggleMenu()"
+        role="button"
+        class="navbar-burger burger"
+        [ngClass]="{ 'is-active': showMenu }"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div
+        id="navbarBasicExample"
+        class="navbar-menu"
+        [ngClass]="{ 'is-active': showMenu }"
+      >
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a
+                class="button is-info"
+                *ngIf="hasBack"
+                (click)="back()"
+                type="button"
+                >< Back</a
+              >
+              <a class="button is-info" [routerLink]="['/cart/checkoutOverview']">
+                Cart ({{ this.elements }} Produkte)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
